@@ -16,6 +16,13 @@ body {
 .card-purple:hover { border-color: #8957E5; box-shadow: 0 0 15px rgba(137, 87, 229, 0.15); }
 .card-gray:hover { border-color: #8B949E; box-shadow: 0 0 15px rgba(139, 148, 158, 0.15); }
 
+.hover-scale { transition: transform 0.3s ease; }
+.hover-scale:hover { transform: translateY(-8px); }
+
+.bg-dangerBg { background-color: rgba(240, 136, 62, 0.1); }
+.border-dangerText { border-color: #F0883E; }
+.text-dangerText { color: #F0883E; }
+
 /* 2. Star Background Animation */
 .stars-container {
     position: fixed;
