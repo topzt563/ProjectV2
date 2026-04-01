@@ -1,77 +1,37 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitDev.TH - บทที่ 1: ปัญหาของการจัดการไฟล์แบบเดิม</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        bgDark: '#0D1117',
-                        textLight: '#C9D1D9',
-                        cardDark: '#161B22',
-                        borderDark: '#30363D',
-                        dangerText: '#FF7B72',
-                        dangerBg: 'rgba(255, 123, 114, 0.1)'
-                    }
-                }
-            }
-        }
-    </script>
-    <link href="" rel="stylesheet">
-    <style>
-        body { font-family: 'Kanit', sans-serif; }
-        .hover-scale { transition: transform 0.3s ease; }
-        .hover-scale:hover { transform: scale(1.02); }
-    </style>
-</head>
-<body class="bg-bgDark text-textLight min-h-screen flex flex-col">
+<main class="max-w-5xl mx-auto w-full px-6 py-12 flex-grow space-y-20">
 
-    <nav class="border-b border-borderDark bg-bgDark/90 sticky top-0 backdrop-blur-md z-50">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-white text-2xl font-bold">
-                GitDev.TH
+        <section class="bg-[#161B22] border border-borderDark p-8 rounded-2xl shadow-lg flex flex-col md:flex-row items-center gap-8">
+            <div class="w-full md:w-1/3 rounded-xl overflow-hidden border border-borderDark">
+                <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=600&auto=format&fit=crop" alt="เรียนรู้ Git" class="w-full h-[200px] object-cover">
             </div>
-            <div class="hidden md:flex space-x-6 text-sm">
-                <a href="home.html" class="hover:text-white transition">หน้าแรก</a>
-                <a href="#" class="text-[#58A6FF] font-medium">เข้าสู่บทเรียน</a>
-                <a href="#" class="hover:text-white transition">สรุปคำสั่ง</a>
-                <a href="#" class="hover:text-white transition">ผู้จัดทำ</a>
+            <div class="w-full md:w-2/3 space-y-3">
+                <h3 class="text-2xl font-bold text-[#58A6FF]">สิ่งที่เราจะเรียนรู้ในบทนี้</h3>
+                <p class="text-[#8B949E] text-sm leading-relaxed">
+                    ก่อนที่จะดำดิ่งสู่คำสั่ง Git เราต้องทำความเข้าใจเจ็บปวดของการจัดการไฟล์แบบเดิมๆ เสียก่อน บทนี้จะพาคุณไปเจาะลึก 4 ปัญหาคลาสสิกที่นักพัฒนาทุกคนต้องเจอเมื่อไม่ได้ใช้ระบบ Version Control เพื่อให้คุณเห็นคุณค่าและจำเป็นของ Git อย่างแท้จริง
+                </p>
+                <ul class="text-xs text-[#C9D1D9] list-disc list-inside space-y-1 pt-2 columns-2">
+                    <li>ความวุ่นวายของการก๊อปปี้ไฟล์</li>
+                    <li>สงครามการเขียนทับโค้ด</li>
+                    <li>การย้อนกลับอดีตที่ทำไม่ได้</li>
+                    <li>ความกลัวที่จะสร้างสรรค์สิ่งใหม่</li>
+                </ul>
             </div>
-        </div>
-    </nav>
-
-    <header class="max-w-5xl mx-auto w-full px-6 pt-16 pb-12 text-center border-b border-borderDark/50">
-        <h1 class="text-3xl md:text-4xl font-bold text-[#58A6FF] mb-4">
-            บทที่ 1: ปัญหาของการจัดการไฟล์แบบเดิม
-        </h1>
-        <p class="text-[#8B949E] text-lg max-w-2xl mx-auto">
-            ทำความเข้าใจข้อจำกัดของการจัดการไฟล์โดยไม่ใช้ระบบควบคุมเวอร์ชัน (Version Control System) ก่อนที่เราจะไปเรียนรู้วิธีแก้ปัญหาด้วย Git
-        </p>
-    </header>
-
-    <main class="max-w-5xl mx-auto w-full px-6 py-12 flex-grow space-y-20">
+        </section>
 
         <section class="flex flex-col md:flex-row items-center gap-10 hover-scale">
             <div class="w-full md:w-1/2 rounded-2xl overflow-hidden border border-borderDark shadow-2xl relative group">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-300"></div>
-                <img src="les1.1.png" alt="ปัญหาการก๊อปปี้ไฟล์" class="w-full h-[300px] object-cover">
+                <img src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=800&auto=format&fit=crop" alt="ปัญหาการก๊อปปี้ไฟล์" class="w-full h-[300px] object-cover">
             </div>
-            
             <div class="w-full md:w-1/2 space-y-4">
-                <div class="inline-block bg-[#F0883E]/20 text-[#F0883E] px-3 py-1 rounded-full text-sm font-semibold mb-2">
-                    ปัญหาที่ 1
-                </div>
+                <div class="inline-block bg-[#F0883E]/20 text-[#F0883E] px-3 py-1 rounded-full text-sm font-semibold mb-2">ปัญหาที่ 1</div>
                 <h2 class="text-2xl font-bold text-white">การจัดเก็บแฟ้มข้อมูลที่ซ้ำซ้อนและสิ้นเปลืองพื้นที่</h2>
                 <p class="text-[#8B949E] leading-relaxed">
-                    ในการพัฒนาโครงงานหรือเขียนโปรแกรมโดยทั่วไป นักพัฒนามักจะสำรองข้อมูลด้วยการคัดลอกแฟ้มข้อมูล (Copy Folder) และเปลี่ยนชื่อไปเรื่อยๆ เช่น <code class="bg-[#21262D] px-1.5 py-0.5 rounded text-white text-sm">Project_Final</code>, <code class="bg-[#21262D] px-1.5 py-0.5 rounded text-white text-sm">Project_Final_v2</code> หรือ <code class="bg-[#21262D] px-1.5 py-0.5 rounded text-white text-sm">Project_ส่งจริง</code>
+                    ในการพัฒนาโปรเจกต์ นักพัฒนามักจะสำรองข้อมูลด้วยการคัดลอกโฟลเดอร์และเปลี่ยนชื่อไปเรื่อยๆ เช่น <code class="bg-[#21262D] px-1.5 py-0.5 rounded text-white text-sm">Project_Final</code>, <code class="bg-[#21262D] px-1.5 py-0.5 rounded text-white text-sm">Project_Final_v2</code> หรือ <code class="bg-[#21262D] px-1.5 py-0.5 rounded text-white text-sm">Project_ส่งจริง</code>
                 </p>
                 <div class="bg-dangerBg border-l-4 border-dangerText p-4 rounded-r-lg mt-4">
                     <strong class="text-dangerText block mb-1">ปัญหาที่พบ:</strong>
-                    <p class="text-sm text-[#C9D1D9]">วิธีการนี้ทำให้เกิดความสับสนเมื่อเวลาผ่านไป และสิ้นเปลืองพื้นที่จัดเก็บข้อมูลในหน่วยความจำอย่างมหาศาล อีกทั้งยังยากต่อการค้นหาว่าแต่ละแฟ้มข้อมูลมีการเปลี่ยนแปลงรหัสต้นฉบับ (Source Code) ในส่วนใดบ้าง</p>
+                    <p class="text-sm text-[#C9D1D9]">เกิดความสับสนเมื่อเวลาผ่านไป สิ้นเปลืองพื้นที่ความจำอย่างมหาศาล และยากต่อการค้นหาว่าแต่ละไฟล์มีการเปลี่ยนแปลงโค้ดในส่วนใดบ้าง</p>
                 </div>
             </div>
         </section>
@@ -79,39 +39,63 @@
         <section class="flex flex-col md:flex-row-reverse items-center gap-10 hover-scale">
             <div class="w-full md:w-1/2 rounded-2xl overflow-hidden border border-borderDark shadow-2xl relative group">
                 <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-300"></div>
-                <img src="les1.1.png" alt="ปัญหาการทำงานเป็นทีม" class="w-full h-[300px] object-cover">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" alt="ปัญหาการทำงานเป็นทีม" class="w-full h-[300px] object-cover">
             </div>
-            
             <div class="w-full md:w-1/2 space-y-4">
-                <div class="inline-block bg-[#F0883E]/20 text-[#F0883E] px-3 py-1 rounded-full text-sm font-semibold mb-2">
-                    ปัญหาที่ 2
-                </div>
+                <div class="inline-block bg-[#F0883E]/20 text-[#F0883E] px-3 py-1 rounded-full text-sm font-semibold mb-2">ปัญหาที่ 2</div>
                 <h2 class="text-2xl font-bold text-white">ข้อจำกัดในการทำงานร่วมกันเป็นทีม (Collaboration)</h2>
                 <p class="text-[#8B949E] leading-relaxed">
-                    เมื่อต้องทำงานร่วมกันหลายคน การแบ่งงานและนำแฟ้มข้อมูลมารวมกันด้วยวิธีการส่งผ่าน Flash Drive หรือแอปพลิเคชันสนทนา มักก่อให้เกิดปัญหา <span class="text-white font-semibold">"การเขียนข้อมูลทับกัน" (Overwriting)</span>
+                    เมื่อต้องทำงานร่วมกันหลายคน การแบ่งงานและนำไฟล์มารวมกันด้วยวิธีการส่งผ่าน Flash Drive หรือแอปพลิเคชันสนทนา มักก่อให้เกิดปัญหา <span class="text-white font-semibold">"การเขียนข้อมูลทับกัน" (Overwriting)</span>
                 </p>
                 <div class="bg-dangerBg border-l-4 border-dangerText p-4 rounded-r-lg mt-4">
                     <strong class="text-dangerText block mb-1">ปัญหาที่พบ:</strong>
-                    <p class="text-sm text-[#C9D1D9]">หากสมาชิกสองคนแก้ไขไฟล์เดียวกันพร้อมกัน เมื่อนำมารวมกัน งานของคนใดคนหนึ่งอาจถูกลบทิ้งไปโดยไม่ตั้งใจ ทำให้ต้องเสียเวลาเริ่มต้นเขียนรหัสต้นฉบับใหม่ทั้งหมด</p>
+                    <p class="text-sm text-[#C9D1D9]">หากสมาชิกสองคนแก้ไขไฟล์เดียวกันพร้อมกัน งานของคนใดคนหนึ่งอาจถูกบันทึกทับและหายไปโดยไม่ตั้งใจ ทำให้ต้องเสียเวลาเขียนรหัสต้นฉบับใหม่ทั้งหมด</p>
                 </div>
             </div>
         </section>
 
+        <section class="flex flex-col md:flex-row items-center gap-10 hover-scale">
+            <div class="w-full md:w-1/2 rounded-2xl overflow-hidden border border-borderDark shadow-2xl relative group">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-300"></div>
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop" alt="ปัญหาการหาจุดบกพร่อง" class="w-full h-[300px] object-cover">
+            </div>
+            <div class="w-full md:w-1/2 space-y-4">
+                <div class="inline-block bg-[#F0883E]/20 text-[#F0883E] px-3 py-1 rounded-full text-sm font-semibold mb-2">ปัญหาที่ 3</div>
+                <h2 class="text-2xl font-bold text-white">ขาดประวัติการแก้ไขและย้อนกลับไม่ได้ (No History & Rollback)</h2>
+                <p class="text-[#8B949E] leading-relaxed">
+                    ในบางครั้งโปรแกรมที่เราเขียนอาจทำงานผิดพลาด (Bug) หากเราใช้วิธีเซฟทับไฟล์เดิมไปเรื่อยๆ เราจะไม่มีทางรู้เลยว่า <span class="text-white font-semibold">"ใครเป็นคนแก้ แก้บรรทัดไหน และแก้ไปเมื่อไหร่"</span>
+                </p>
+                <div class="bg-dangerBg border-l-4 border-dangerText p-4 rounded-r-lg mt-4">
+                    <strong class="text-dangerText block mb-1">ปัญหาที่พบ:</strong>
+                    <p class="text-sm text-[#C9D1D9]">เมื่อระบบพัง การจะย้อนกลับ (Rollback) ไปยังเวอร์ชันก่อนหน้าที่ยังใช้งานได้ปกติจะทำได้ยากมาก หรือแทบเป็นไปไม่ได้เลยหากไม่ได้คัดลอกไฟล์เก็บไว้</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="flex flex-col md:flex-row-reverse items-center gap-10 hover-scale">
+            <div class="w-full md:w-1/2 rounded-2xl overflow-hidden border border-borderDark shadow-2xl relative group">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-300"></div>
+                <img src="https://images.unsplash.com/photo-1506452812517-0e620db4027f?q=80&w=800&auto=format&fit=crop" alt="ความกลัวที่จะแก้ไขโค้ด" class="w-full h-[300px] object-cover">
+            </div>
+            <div class="w-full md:w-1/2 space-y-4">
+                <div class="inline-block bg-[#F0883E]/20 text-[#F0883E] px-3 py-1 rounded-full text-sm font-semibold mb-2">ปัญหาที่ 4</div>
+                <h2 class="text-2xl font-bold text-white">ความกลัวที่จะทดลองสิ่งใหม่ (Fear of Breaking Things)</h2>
+                <p class="text-[#8B949E] leading-relaxed">
+                    เมื่อโค้ดหลักทำงานได้สมบูรณ์แล้ว นักพัฒนามักจะไม่กล้าเขียนฟีเจอร์ใหม่หรือทดลองปรับปรุงโครงสร้างโค้ด (Refactoring) เพราะกลัวว่าถ้าทำพลาดแล้วจะส่งผลกระทบให้โปรเจกต์ทั้งหมดใช้งานไม่ได้
+                </p>
+                <div class="bg-dangerBg border-l-4 border-dangerText p-4 rounded-r-lg mt-4">
+                    <strong class="text-dangerText block mb-1">ปัญหาที่พบ:</strong>
+                    <p class="text-sm text-[#C9D1D9]">ปิดกั้นความคิดสร้างสรรค์และทำให้การพัฒนาโปรเจกต์เติบโตได้ช้า เพราะไม่มีระบบรักษาความปลอดภัยที่ช่วยให้ทดลองเขียนโค้ดได้อย่างอิสระ</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-[#161B22] border border-borderDark p-8 rounded-2xl text-center mt-12 shadow-lg relative overflow-hidden">
+            <svg class="absolute -bottom-10 -right-10 w-40 h-40 text-white/5" fill="currentColor" viewBox="0 0 24 24"><path d="M2.646 1.146l20.208 20.208a1.5 1.5 0 010 2.122l-10 10a1.5 1.5 0 01-2.122 0L2.646 23.646a1.5 1.5 0 010-2.122l10-10a1.5 1.5 0 012.122 0l10 10a1.5 1.5 0 010 2.122L3.646 22.146a1.5 1.5 0 01-2.122 0L2.646 1.146zM12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm1 14h-2v-6h2v6zm0-8h-2V6h2v2z"/></svg>
+            <h3 class="text-2xl font-bold text-[#58A6FF] mb-4 relative z-10">ทางออกของปัญหาคืออะไร?</h3>
+            <p class="text-[#8B949E] max-w-3xl mx-auto relative z-10">
+                ปัญหาทั้งหมดที่กล่าวมานี้ สามารถแก้ไขได้อย่างหมดจดด้วยการใช้งาน <strong class="text-white">ระบบควบคุมเวอร์ชัน (Version Control System)</strong> อย่างเช่น <strong class="text-white">Git</strong> ซึ่งเปรียบเสมือนไทม์แมชชีนและระบบจัดการไฟล์อัจฉริยะสำหรับนักพัฒนา
+            </p>
+        </section>
+
     </main>
-
-<div class="max-w-5xl mx-auto w-full px-6 pb-20 flex flex-col sm:flex-row justify-between items-center gap-4">
-        
-        <a href="home.html" class="flex items-center gap-2 bg-[#21262D] hover:bg-[#30363D] border border-[#30363D] text-[#C9D1D9] hover:text-white font-semibold py-3 px-6 rounded-lg transition shadow-lg w-full sm:w-auto justify-center">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-            กลับไปหน้าหลัก
-        </a>
-
-        <a href="#" class="flex items-center gap-2 bg-[#238636] hover:bg-[#2EA043] text-white font-semibold py-3 px-6 rounded-lg transition shadow-lg w-full sm:w-auto justify-center">
-            ไปสู่บทที่ 2: เริ่มต้นใช้ Git
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-        </a>
-        
-    </div>
-
-</body>
-</html>

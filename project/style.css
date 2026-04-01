@@ -2,12 +2,19 @@
 body {
     background-color: #0D1117;
     color: #C9D1D9;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Kanit', sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
     overflow-x: hidden;
 }
+
+.card-transition { transition: all 0.3s ease; }
+.card-orange:hover { border-color: #F0883E; box-shadow: 0 0 15px rgba(240, 136, 62, 0.15); }
+.card-blue:hover { border-color: #58A6FF; box-shadow: 0 0 15px rgba(88, 166, 255, 0.15); }
+.card-green:hover { border-color: #3FB950; box-shadow: 0 0 15px rgba(63, 185, 80, 0.15); }
+.card-purple:hover { border-color: #8957E5; box-shadow: 0 0 15px rgba(137, 87, 229, 0.15); }
+.card-gray:hover { border-color: #8B949E; box-shadow: 0 0 15px rgba(139, 148, 158, 0.15); }
 
 /* 2. Star Background Animation */
 .stars-container {
@@ -34,7 +41,7 @@ body {
 }
 
 /* 3. Header */
-header {
+.site-header {
     background-color: rgba(22, 27, 34, 0.9);
     padding: 20px 40px;
     display: flex;
@@ -42,7 +49,6 @@ header {
     align-items: center;
     border-bottom: 1px solid #30363D;
     backdrop-filter: blur(10px);
-    position: sticky; top: 0; z-index: 100;
 }
 
 .logo { font-size: 24px; font-weight: bold; color: #FFFFFF; }
