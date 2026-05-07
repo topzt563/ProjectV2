@@ -1,9 +1,9 @@
 // ─── NAVBAR ACTIVE STATE ──────────────────────────
 (function setActiveNav() {
-  const current = location.pathname.split('/').pop() || 'home.html';
+  const current = location.pathname.split('/').pop() || '/home.html';
   document.querySelectorAll('.nav-link, .sidebar-link').forEach(link => {
     const href = link.getAttribute('href') || '';
-    if (href.includes(current) || (current === 'home.html' && href.includes('home'))) {
+    if (href.includes(current) || (current === '/home.html' && href.includes('home'))) {
       link.classList.add('active');
     }
   });
