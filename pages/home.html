@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="th">
+<!-- moved to: c:\Users\USER17\Downloads\gitlearn\projectV2\home.html -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitLearn – เรียนรู้ Git &amp; GitHub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="grid-bg">
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="home.html" class="nav-logo">
+      <span>~/</span>git<span>-</span>learn
+    </a>
+    <div class="nav-links">
+      <a href="home.html" class="nav-link active">🏠 หน้าหลัก</a>
+      <a href="pages/chapter1.html" class="nav-link">บทที่ 1</a>
+      <a href="pages/chapter2.html" class="nav-link">บทที่ 2</a>
+      <a href="pages/chapter3.html" class="nav-link">บทที่ 3</a>
+      <a href="pages/chapter4.html" class="nav-link">บทที่ 4</a>
+      <a href="pages/chapter5.html" class="nav-link">บทที่ 5</a>
+    </div>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="home.html" class="nav-link active">🏠 หน้าหลัก</a>
+    <a href="pages/chapter1.html" class="nav-link">📖 บทที่ 1 – ทำความรู้จัก Git</a>
+    <a href="pages/chapter2.html" class="nav-link">⚙️ บทที่ 2 – การติดตั้ง</a>
+    <a href="pages/chapter3.html" class="nav-link">💻 บทที่ 3 – คำสั่งพื้นฐาน</a>
+    <a href="pages/chapter4.html" class="nav-link">🐙 บทที่ 4 – GitHub เบื้องต้น</a>
+    <a href="pages/chapter5.html" class="nav-link">🌿 บทที่ 5 – Branch &amp; Merge</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-glow-2"></div>
+    <div style="position:relative;z-index:1;width:100%;max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:3rem;align-items:center;">
+
+      <!-- Left -->
+      <div style="flex:1;min-width:300px;">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Version Control System · Git · GitHub
+        </div>
+        <h1 class="hero-title">
+          เรียนรู้ <span class="highlight">Git</span><br/>
+          &amp; <span class="highlight">GitHub</span><br/>
+          ตั้งแต่ศูนย์
+        </h1>
+        <p class="hero-sub">
+          คู่มือฉบับครบถ้วนสำหรับนักพัฒนามือใหม่ ตั้งแต่การติดตั้ง คำสั่งพื้นฐาน ไปจนถึงการทำงานร่วมกับทีม บน GitHub อย่างมืออาชีพ
+        </p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp 0.7s 0.3s ease both;opacity:0;">
+          <a href="pages/chapter1.html" class="btn-primary">
+            🚀 เริ่มเรียนเลย
+          </a>
+          <a href="#chapters" class="btn-secondary">
+            📚 ดูบทเรียน
+          </a>
+        </div>
+      </div>
+
+      <!-- Terminal -->
+      <div style="flex:1;min-width:280px;max-width:480px;">
+        <div class="terminal">
+          <div class="terminal-bar">
+            <div class="terminal-dot" style="background:#ff5f57"></div>
+            <div class="terminal-dot" style="background:#febc2e"></div>
+            <div class="terminal-dot" style="background:#28c840"></div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:#4a6580;margin-left:0.5rem;">bash — git-learn</span>
+          </div>
+          <div class="terminal-body">
+            <span class="t-line">
+              <span class="t-prompt">➜ ~/project</span>
+              <span class="t-cmd"> git init</span>
+            </span>
+            <span class="t-line t-output">Initialized empty Git repository</span>
+            <span class="t-line" style="margin-top:0.5rem">
+              <span class="t-prompt">➜ ~/project</span>
+              <span class="t-cmd"> git add .</span>
+            </span>
+            <span class="t-line" style="margin-top:0.5rem">
+              <span class="t-prompt">➜ ~/project</span>
+              <span class="t-cmd"> git commit -m</span>
+              <span style="color:#a3e635;"> "first commit 🎉"</span>
+            </span>
+            <span class="t-line t-success">[main (root)] 1 file changed</span>
+            <span class="t-line" style="margin-top:0.5rem">
+              <span class="t-prompt">➜ ~/project</span>
+              <span class="t-cmd"> git push origin main</span>
+            </span>
+            <span class="t-line t-output">Branch 'main' set up to track 'origin/main'</span>
+            <span class="t-line t-success">✓ Everything up-to-date</span>
+            <span class="t-line" style="margin-top:0.5rem">
+              <span class="t-prompt">➜ ~/project</span>
+              <span class="cursor"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section style="padding:2rem;max-width:1100px;margin:0 auto;">
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;">
+      <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:1.25rem 2rem;text-align:center;flex:1;min-width:140px;">
+        <div style="font-size:1.8rem;font-weight:800;color:var(--accent-green);font-family:'JetBrains Mono',monospace;">5</div>
+        <div style="font-size:0.8rem;color:var(--text-secondary);margin-top:0.25rem;">บทเรียน</div>
+      </div>
+      <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:1.25rem 2rem;text-align:center;flex:1;min-width:140px;">
+        <div style="font-size:1.8rem;font-weight:800;color:var(--accent-cyan);font-family:'JetBrains Mono',monospace;">20+</div>
+        <div style="font-size:0.8rem;color:var(--text-secondary);margin-top:0.25rem;">คำสั่ง Git</div>
+      </div>
+      <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:1.25rem 2rem;text-align:center;flex:1;min-width:140px;">
+        <div style="font-size:1.8rem;font-weight:800;color:#a78bfa;font-family:'JetBrains Mono',monospace;">5</div>
+        <div style="font-size:0.8rem;color:var(--text-secondary);margin-top:0.25rem;">วิดีโอสาธิต</div>
+      </div>
+      <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:1.25rem 2rem;text-align:center;flex:1;min-width:140px;">
+        <div style="font-size:1.8rem;font-weight:800;color:#fb923c;font-family:'JetBrains Mono',monospace;">Free</div>
+        <div style="font-size:0.8rem;color:var(--text-secondary);margin-top:0.25rem;">เรียนฟรี!</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTERS -->
+  <section id="chapters" style="padding:4rem 2rem;max-width:1100px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--accent-green);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.75rem;">บทเรียนทั้งหมด</div>
+      <h2 style="font-size:2rem;font-weight:800;">เริ่มจากพื้นฐาน<br/><span style="background:linear-gradient(135deg,var(--accent-green),var(--accent-cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">ไปจนถึงระดับมืออาชีพ</span></h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;">
+
+      <a href="pages/chapter1.html" class="chapter-card green">
+        <div class="card-num">บทที่ 01</div>
+        <span class="card-icon">📦</span>
+        <div class="card-title">ทำความรู้จัก Git &amp; Version Control</div>
+        <div class="card-desc">ทำความเข้าใจว่า Git คืออะไร ทำไมนักพัฒนาทุกคนต้องใช้ และ Version Control System ทำงานอย่างไร</div>
+        <div class="card-arrow">→</div>
+      </a>
+
+      <a href="pages/chapter2.html" class="chapter-card cyan">
+        <div class="card-num">บทที่ 02</div>
+        <span class="card-icon">⚙️</span>
+        <div class="card-title">ติดตั้ง Git &amp; สมัคร GitHub</div>
+        <div class="card-desc">ขั้นตอนการติดตั้ง Git บน Windows, macOS, Linux และการสร้างบัญชี GitHub พร้อม config ครั้งแรก</div>
+        <div class="card-arrow">→</div>
+      </a>
+
+      <a href="pages/chapter3.html" class="chapter-card purple">
+        <div class="card-num">บทที่ 03</div>
+        <span class="card-icon">💻</span>
+        <div class="card-title">คำสั่งพื้นฐาน Git</div>
+        <div class="card-desc">เรียนรู้คำสั่งสำคัญ: init, add, commit, push, pull, status, log และการใช้งานจริง</div>
+        <div class="card-arrow">→</div>
+      </a>
+
+      <a href="pages/chapter4.html" class="chapter-card" style="border-color:var(--border-color);">
+        <div class="card-num">บทที่ 04</div>
+        <span class="card-icon">🐙</span>
+        <div class="card-title">GitHub เบื้องต้น</div>
+        <div class="card-desc">สร้าง Repository, ทำ Fork, Clone โปรเจกต์ และเปิด Pull Request เพื่อร่วมพัฒนากับทีม</div>
+        <div class="card-arrow">→</div>
+      </a>
+
+      <a href="pages/chapter5.html" class="chapter-card" style="border-color:var(--border-color);">
+        <div class="card-num">บทที่ 05</div>
+        <span class="card-icon">🌿</span>
+        <div class="card-title">Branch &amp; Merge</div>
+        <div class="card-desc">การแตก Branch ทำงานคู่ขนาน รวมโค้ดด้วย Merge และแก้ไข Conflict อย่างถูกวิธี</div>
+        <div class="card-arrow">→</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="border-top:1px solid var(--border-color);padding:2rem;text-align:center;color:var(--text-secondary);font-size:0.8rem;font-family:'JetBrains Mono',monospace;">
+    <div style="margin-bottom:0.5rem;color:var(--text-primary);font-weight:600;">GitLearn – เว็บไซต์ให้ความรู้เรื่อง Git &amp; GitHub</div>
+    <div>จัดทำโดย นายคณพศ หอมสิน · วิทยาลัยเทคนิคอุบลราชธานี · สาขาเทคโนโลยีคอมพิวเตอร์</div>
+    <div style="margin-top:0.5rem;">ครูที่ปรึกษา: นายคณิตกร พรมหล่อ</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

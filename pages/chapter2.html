@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>บทที่ 2 – ติดตั้ง Git & GitHub | GitLearn</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="grid-bg">
+
+  <nav class="navbar">
+    <a href="../home.html" class="nav-logo"><span>~/</span>git<span>-</span>learn</a>
+    <div class="nav-links">
+      <a href="../home.html" class="nav-link">🏠 หน้าหลัก</a>
+      <a href="chapter1.html" class="nav-link">บทที่ 1</a>
+      <a href="chapter2.html" class="nav-link active">บทที่ 2</a>
+      <a href="chapter3.html" class="nav-link">บทที่ 3</a>
+      <a href="chapter4.html" class="nav-link">บทที่ 4</a>
+      <a href="chapter5.html" class="nav-link">บทที่ 5</a>
+    </div>
+    <button class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
+  </nav>
+
+  <div id="sidebarOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:49;" onclick="document.getElementById('sidebar').classList.remove('open');this.style.display='none';"></div>
+
+  <div class="page-wrapper">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-title">บทเรียน</div>
+      <a href="chapter1.html" class="sidebar-link"><span class="sidebar-num">01</span>ทำความรู้จัก Git</a>
+      <a href="chapter2.html" class="sidebar-link active"><span class="sidebar-num">02</span>การติดตั้ง</a>
+      <a href="chapter3.html" class="sidebar-link"><span class="sidebar-num">03</span>คำสั่งพื้นฐาน</a>
+      <a href="chapter4.html" class="sidebar-link"><span class="sidebar-num">04</span>GitHub เบื้องต้น</a>
+      <a href="chapter5.html" class="sidebar-link"><span class="sidebar-num">05</span>Branch &amp; Merge</a>
+      <div class="sidebar-divider"></div>
+      <a href="../home.html" class="sidebar-link"><span class="sidebar-num">↩</span>กลับหน้าหลัก</a>
+    </aside>
+
+    <main class="content-area">
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;">
+        <span class="tag tag-green">Setup</span>
+        <span class="tag tag-cyan">Installation</span>
+      </div>
+      <h1 class="page-title">บทที่ 2 – ติดตั้ง Git &amp; สมัคร GitHub</h1>
+      <p class="page-subtitle">เรียนรู้วิธีติดตั้ง Git บนทุกระบบปฏิบัติการ และสร้างบัญชี GitHub พร้อม config ตั้งต้น</p>
+
+      <!-- VIDEO -->
+      <div class="video-container">
+        <div class="video-label"><span class="play-icon">▶</span> วิดีโอสาธิต – ติดตั้ง Git และ Config เบื้องต้น</div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/8JJ101D3knE" title="Git Tutorial" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <h2 class="section-title">ดาวน์โหลดและติดตั้ง Git</h2>
+      <div class="prose">
+        <p>ไปที่เว็บไซต์ <a href="https://git-scm.com" target="_blank">git-scm.com</a> แล้วดาวน์โหลดเวอร์ชันที่เหมาะกับระบบปฏิบัติการของคุณ</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem;margin:1.5rem 0;">
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:1.25rem;">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem;">🪟</div>
+          <div style="font-weight:700;margin-bottom:0.5rem;">Windows</div>
+          <div style="font-size:0.85rem;color:var(--text-secondary);">ดาวน์โหลด .exe installer จาก git-scm.com แล้วติดตั้งแบบ Next → Next → Finish</div>
+        </div>
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:1.25rem;">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem;">🍎</div>
+          <div style="font-weight:700;margin-bottom:0.5rem;">macOS</div>
+          <div style="font-size:0.85rem;color:var(--text-secondary);">ใช้ Homebrew: <code style="font-family:'JetBrains Mono',monospace;color:var(--accent-cyan);">brew install git</code> หรือติดตั้งผ่าน Xcode Command Line Tools</div>
+        </div>
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:1.25rem;">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem;">🐧</div>
+          <div style="font-weight:700;margin-bottom:0.5rem;">Linux (Ubuntu)</div>
+          <div style="font-size:0.85rem;color:var(--text-secondary);">ใช้ apt: <code style="font-family:'JetBrains Mono',monospace;color:var(--accent-cyan);">sudo apt install git</code></div>
+        </div>
+      </div>
+
+      <h2 class="section-title">ตรวจสอบการติดตั้ง</h2>
+      <div class="code-block">
+        <div class="code-header">
+          <span>bash – ตรวจสอบเวอร์ชัน Git</span>
+          <button class="code-copy">Copy</button>
+        </div>
+        <div class="code-body">
+<span class="cmd">git --version</span>
+<span class="cmt"># ผลลัพธ์ที่ควรได้ (เวอร์ชันอาจแตกต่างกัน)</span>
+<span class="out">git version 2.44.0</span>
+        </div>
+      </div>
+
+      <h2 class="section-title">Config ข้อมูลผู้ใช้ (ต้องทำก่อนใช้ครั้งแรก)</h2>
+      <div class="prose">
+        <p>Git จะใช้ข้อมูลนี้เพื่อบันทึกว่าใครเป็นคนทำ Commit ต้องตั้งค่าครั้งเดียวต่อเครื่อง</p>
+      </div>
+      <div class="code-block">
+        <div class="code-header">
+          <span>bash – ตั้งค่าชื่อและอีเมล</span>
+          <button class="code-copy">Copy</button>
+        </div>
+        <div class="code-body">
+<span class="cmt"># ตั้งชื่อผู้ใช้ (ใช้ชื่อจริงหรือชื่อ GitHub ก็ได้)</span>
+<span class="cmd">git config --global</span> user.name <span class="str">"ชื่อของคุณ"</span>
+
+<span class="cmt"># ตั้งอีเมล (ใช้อีเมลเดียวกับ GitHub)</span>
+<span class="cmd">git config --global</span> user.email <span class="str">"email@example.com"</span>
+
+<span class="cmt"># ตรวจสอบการตั้งค่าทั้งหมด</span>
+<span class="cmd">git config --list</span>
+        </div>
+      </div>
+
+      <h2 class="section-title">สร้างบัญชี GitHub</h2>
+      <ol class="steps">
+        <li>
+          <div>
+            <div class="step-title">ไปที่ github.com</div>
+            <div class="step-desc">เปิดเบราว์เซอร์แล้วไปที่ <a href="https://github.com" target="_blank" style="color:var(--accent-cyan);">github.com</a> คลิกปุ่ม "Sign up"</div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="step-title">กรอกข้อมูล</div>
+            <div class="step-desc">ใส่ Email, Password และ Username ที่ต้องการ ชื่อ Username จะใช้เป็น URL โปรไฟล์ของคุณ</div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="step-title">ยืนยันอีเมล</div>
+            <div class="step-desc">GitHub จะส่ง code ไปที่อีเมล กรอก code เพื่อยืนยันตัวตน</div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="step-title">ตั้งค่าโปรไฟล์</div>
+            <div class="step-desc">เพิ่มรูปโปรไฟล์ ชื่อ และ bio เพื่อให้โปรไฟล์ดูน่าเชื่อถือ</div>
+          </div>
+        </li>
+      </ol>
+
+      <div class="info-box tip">
+        <div class="box-title">💡 เคล็ดลับ</div>
+        ใช้อีเมลเดียวกันใน Git config และ GitHub account เพื่อให้ Commit ของคุณแสดงรูปโปรไฟล์ถูกต้อง
+      </div>
+
+      <div class="chapter-nav">
+        <a href="chapter1.html">← บทที่ 1</a>
+        <a href="chapter3.html">บทที่ 3 – คำสั่งพื้นฐาน →</a>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

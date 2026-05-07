@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>บทที่ 5 – Branch & Merge | GitLearn</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="grid-bg">
+
+  <nav class="navbar">
+    <a href="../home.html" class="nav-logo"><span>~/</span>git<span>-</span>learn</a>
+    <div class="nav-links">
+      <a href="../home.html" class="nav-link">🏠 หน้าหลัก</a>
+      <a href="chapter1.html" class="nav-link">บทที่ 1</a>
+      <a href="chapter2.html" class="nav-link">บทที่ 2</a>
+      <a href="chapter3.html" class="nav-link">บทที่ 3</a>
+      <a href="chapter4.html" class="nav-link">บทที่ 4</a>
+      <a href="chapter5.html" class="nav-link active">บทที่ 5</a>
+    </div>
+    <button class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
+  </nav>
+
+  <div id="sidebarOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:49;" onclick="document.getElementById('sidebar').classList.remove('open');this.style.display='none';"></div>
+
+  <div class="page-wrapper">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-title">บทเรียน</div>
+      <a href="chapter1.html" class="sidebar-link"><span class="sidebar-num">01</span>ทำความรู้จัก Git</a>
+      <a href="chapter2.html" class="sidebar-link"><span class="sidebar-num">02</span>การติดตั้ง</a>
+      <a href="chapter3.html" class="sidebar-link"><span class="sidebar-num">03</span>คำสั่งพื้นฐาน</a>
+      <a href="chapter4.html" class="sidebar-link"><span class="sidebar-num">04</span>GitHub เบื้องต้น</a>
+      <a href="chapter5.html" class="sidebar-link active"><span class="sidebar-num">05</span>Branch &amp; Merge</a>
+      <div class="sidebar-divider"></div>
+      <a href="../home.html" class="sidebar-link"><span class="sidebar-num">↩</span>กลับหน้าหลัก</a>
+    </aside>
+
+    <main class="content-area">
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;">
+        <span class="tag tag-purple">Branch</span>
+        <span class="tag tag-green">Merge</span>
+        <span class="tag" style="background:rgba(244,63,94,0.1);color:#fb7185;border:1px solid rgba(244,63,94,0.2);">Conflict</span>
+      </div>
+      <h1 class="page-title">บทที่ 5 – Branch &amp; Merge</h1>
+      <p class="page-subtitle">การแตก Branch เพื่อพัฒนาฟีเจอร์แยก และรวมโค้ดกลับด้วย Merge อย่างถูกวิธี</p>
+
+      <!-- VIDEO -->
+      <div class="video-container">
+        <div class="video-label"><span class="play-icon">▶</span> วิดีโอสาธิต – Git Branching และ Merging</div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/e2IbNHi4uCI" title="Git Branching" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <h2 class="section-title">Branch คืออะไร?</h2>
+      <div class="prose">
+        <p><strong>Branch</strong> คือสายการพัฒนาที่แยกออกมาจาก main สามารถทำงานหลายฟีเจอร์พร้อมกันได้โดยไม่กระทบกัน เมื่อเสร็จแล้วจึงนำมารวมกัน (Merge)</p>
+      </div>
+
+      <!-- Branch diagram -->
+      <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:1.5rem;margin:1.5rem 0;font-family:'JetBrains Mono',monospace;font-size:0.8rem;overflow-x:auto;">
+        <div style="color:var(--text-secondary);margin-bottom:1rem;font-size:0.7rem;letter-spacing:0.1em;">BRANCH DIAGRAM</div>
+        <div style="display:flex;flex-direction:column;gap:0.4rem;line-height:1.8;">
+          <span style="color:var(--accent-green);">main  ●───●───●──────────────────●  (merge)</span>
+          <span style="color:var(--text-secondary);">             └──●───●───●  feature/login</span>
+          <span style="color:var(--accent-cyan);">             └──●───●  bugfix/nav</span>
+        </div>
+      </div>
+
+      <h2 class="section-title">คำสั่งจัดการ Branch</h2>
+      <div class="code-block">
+        <div class="code-header"><span>bash – การสร้างและสลับ Branch</span><button class="code-copy">Copy</button></div>
+        <div class="code-body">
+<span class="cmt"># ดู branch ทั้งหมด (* = branch ปัจจุบัน)</span>
+<span class="cmd">git branch</span>
+<span class="out">* main</span>
+<span class="out">  feature/login</span>
+
+<span class="cmt"># สร้าง branch ใหม่</span>
+<span class="cmd">git branch</span> feature/login
+
+<span class="cmt"># สลับไปยัง branch ที่ต้องการ</span>
+<span class="cmd">git checkout</span> feature/login
+
+<span class="cmt"># สร้างและสลับไป branch ใหม่ในคำสั่งเดียว (แนะนำ)</span>
+<span class="cmd">git checkout -b</span> feature/login
+
+<span class="cmt"># (Git เวอร์ชันใหม่) ใช้ switch แทน checkout</span>
+<span class="cmd">git switch -c</span> feature/login
+        </div>
+      </div>
+
+      <h2 class="section-title">Merge – รวม Branch</h2>
+      <div class="code-block">
+        <div class="code-header"><span>bash – การ Merge branch</span><button class="code-copy">Copy</button></div>
+        <div class="code-body">
+<span class="cmt"># 1. สลับกลับไปที่ main ก่อน</span>
+<span class="cmd">git checkout</span> main
+
+<span class="cmt"># 2. Merge feature branch เข้ามา</span>
+<span class="cmd">git merge</span> feature/login
+<span class="out">Updating 3a8f9c1..7b2e4d8</span>
+<span class="out">Fast-forward</span>
+<span class="out"> login.html | 45 ++++++++++++</span>
+
+<span class="cmt"># 3. ลบ branch ที่ merge แล้ว (ถ้าไม่ต้องการแล้ว)</span>
+<span class="cmd">git branch -d</span> feature/login
+        </div>
+      </div>
+
+      <h2 class="section-title">แก้ไข Merge Conflict</h2>
+      <div class="prose">
+        <p><strong>Conflict</strong> เกิดขึ้นเมื่อ 2 branch แก้ไขส่วนเดียวกันของไฟล์ Git จะทำเครื่องหมายไว้ในไฟล์เพื่อให้แก้ไขด้วยตัวเอง</p>
+      </div>
+      <div class="code-block">
+        <div class="code-header"><span>html – ตัวอย่าง Conflict ที่ Git สร้างขึ้น</span><button class="code-copy">Copy</button></div>
+        <div class="code-body">
+<span class="err">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span>
+<span class="out">&lt;h1&gt;สวัสดี GitLearn&lt;/h1&gt;</span>
+<span class="err">=======</span>
+<span class="cmd">&lt;h1&gt;ยินดีต้อนรับสู่ GitLearn&lt;/h1&gt;</span>
+<span class="err">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/login</span>
+        </div>
+      </div>
+      <ol class="steps">
+        <li>
+          <div>
+            <div class="step-title">เปิดไฟล์ที่มี conflict</div>
+            <div class="step-desc">Git จะบอกว่าไฟล์ไหน conflict ผ่าน <code style="font-family:'JetBrains Mono',monospace;color:var(--accent-cyan);">git status</code></div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="step-title">แก้ไขโค้ดในไฟล์</div>
+            <div class="step-desc">ลบ marker (&lt;&lt;&lt;, ===, &gt;&gt;&gt;) ออก แล้วเลือกโค้ดที่ต้องการหรือรวมทั้งสองเข้าด้วยกัน</div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="step-title">git add ไฟล์ที่แก้แล้ว</div>
+            <div class="step-desc"><code style="font-family:'JetBrains Mono',monospace;color:var(--accent-cyan);">git add index.html</code></div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="step-title">git commit เพื่อสรุปการ merge</div>
+            <div class="step-desc"><code style="font-family:'JetBrains Mono',monospace;color:var(--accent-cyan);">git commit -m "Resolve merge conflict"</code></div>
+          </div>
+        </li>
+      </ol>
+
+      <div class="info-box tip">
+        <div class="box-title">💡 Best Practice</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.4rem;">
+          <li>✅ ตั้งชื่อ branch ให้สื่อความหมาย เช่น <code style="font-family:'JetBrains Mono',monospace;">feature/login</code>, <code style="font-family:'JetBrains Mono',monospace;">bugfix/header</code></li>
+          <li>✅ Merge บ่อยๆ เพื่อลด conflict</li>
+          <li>✅ ใช้ <code style="font-family:'JetBrains Mono',monospace;">git pull</code> ดึงโค้ดใหม่ก่อนเริ่มทำงานทุกครั้ง</li>
+          <li>✅ ลบ branch ที่ merge แล้วเพื่อความเรียบร้อย</li>
+        </ul>
+      </div>
+
+      <!-- COMPLETION CARD -->
+      <div style="background:linear-gradient(135deg,rgba(0,255,136,0.08),rgba(0,212,255,0.08));border:1px solid rgba(0,255,136,0.2);border-radius:16px;padding:2.5rem;text-align:center;margin-top:3rem;">
+        <div style="font-size:3rem;margin-bottom:1rem;">🎉</div>
+        <h3 style="font-size:1.5rem;font-weight:800;margin-bottom:0.75rem;">ยินดีด้วย! คุณเรียนจบแล้ว</h3>
+        <p style="color:var(--text-secondary);font-size:0.95rem;max-width:500px;margin:0 auto 2rem;">คุณได้เรียนรู้ทุกบทเรียนเกี่ยวกับ Git และ GitHub ครบถ้วนแล้ว นำความรู้นี้ไปประยุกต์ใช้กับโปรเจกต์จริงของคุณได้เลย!</div>
+        <a href="../home.html" class="btn-primary" style="display:inline-flex;">🏠 กลับหน้าหลัก</a>
+      </div>
+
+      <div class="chapter-nav">
+        <a href="chapter4.html">← บทที่ 4</a>
+        <a href="../home.html">🏠 หน้าหลัก</a>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

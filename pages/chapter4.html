@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>บทที่ 4 – GitHub เบื้องต้น | GitLearn</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="grid-bg">
+
+  <nav class="navbar">
+    <a href="../home.html" class="nav-logo"><span>~/</span>git<span>-</span>learn</a>
+    <div class="nav-links">
+      <a href="../home.html" class="nav-link">🏠 หน้าหลัก</a>
+      <a href="chapter1.html" class="nav-link">บทที่ 1</a>
+      <a href="chapter2.html" class="nav-link">บทที่ 2</a>
+      <a href="chapter3.html" class="nav-link">บทที่ 3</a>
+      <a href="chapter4.html" class="nav-link active">บทที่ 4</a>
+      <a href="chapter5.html" class="nav-link">บทที่ 5</a>
+    </div>
+    <button class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
+  </nav>
+
+  <div id="sidebarOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:49;" onclick="document.getElementById('sidebar').classList.remove('open');this.style.display='none';"></div>
+
+  <div class="page-wrapper">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-title">บทเรียน</div>
+      <a href="chapter1.html" class="sidebar-link"><span class="sidebar-num">01</span>ทำความรู้จัก Git</a>
+      <a href="chapter2.html" class="sidebar-link"><span class="sidebar-num">02</span>การติดตั้ง</a>
+      <a href="chapter3.html" class="sidebar-link"><span class="sidebar-num">03</span>คำสั่งพื้นฐาน</a>
+      <a href="chapter4.html" class="sidebar-link active"><span class="sidebar-num">04</span>GitHub เบื้องต้น</a>
+      <a href="chapter5.html" class="sidebar-link"><span class="sidebar-num">05</span>Branch &amp; Merge</a>
+      <div class="sidebar-divider"></div>
+      <a href="../home.html" class="sidebar-link"><span class="sidebar-num">↩</span>กลับหน้าหลัก</a>
+    </aside>
+
+    <main class="content-area">
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;">
+        <span class="tag tag-cyan">GitHub</span>
+        <span class="tag tag-green">Repository</span>
+        <span class="tag tag-purple">Pull Request</span>
+      </div>
+      <h1 class="page-title">บทที่ 4 – GitHub เบื้องต้น</h1>
+      <p class="page-subtitle">เรียนรู้การสร้าง Repository, Clone โปรเจกต์, Fork และเปิด Pull Request เพื่อร่วมพัฒนากับทีม</p>
+
+      <!-- VIDEO -->
+      <div class="video-container">
+        <div class="video-label"><span class="play-icon">▶</span> วิดีโอสาธิต – GitHub สำหรับมือใหม่</div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/iv8rSLsi1xo" title="GitHub Tutorial" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <h2 class="section-title">สร้าง Repository บน GitHub</h2>
+      <ol class="steps">
+        <li>
+          <div>
+            <div class="step-title">คลิก "New" หรือ "+" แล้วเลือก "New repository"</div>
+            <div class="step-desc">ที่มุมขวาบนของ GitHub.com</div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="step-title">ตั้งชื่อ Repository</div>
+            <div class="step-desc">ใส่ชื่อโปรเจกต์ เช่น <code style="font-family:'JetBrains Mono',monospace;color:var(--accent-cyan);">my-first-repo</code> เลือก Public หรือ Private</div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="step-title">เลือกตัวเลือกเพิ่มเติม</div>
+            <div class="step-desc">ติ๊ก "Add a README file" เพื่อสร้างไฟล์ README อัตโนมัติ</div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="step-title">คลิก "Create repository"</div>
+            <div class="step-desc">Repository พร้อมใช้งานแล้ว!</div>
+          </div>
+        </li>
+      </ol>
+
+      <h2 class="section-title">เชื่อมต่อ Local กับ GitHub (Remote)</h2>
+      <div class="code-block">
+        <div class="code-header"><span>bash – เชื่อม local repo กับ GitHub</span><button class="code-copy">Copy</button></div>
+        <div class="code-body">
+<span class="cmt"># เพิ่ม remote origin (แทนที่ URL ด้วย URL repo ของคุณ)</span>
+<span class="cmd">git remote add</span> origin https://github.com/username/my-first-repo.git
+
+<span class="cmt"># ตรวจสอบ remote ที่ตั้งค่าไว้</span>
+<span class="cmd">git remote -v</span>
+<span class="out">origin  https://github.com/username/my-first-repo.git (fetch)</span>
+<span class="out">origin  https://github.com/username/my-first-repo.git (push)</span>
+
+<span class="cmt"># push โค้ดขึ้น GitHub ครั้งแรก</span>
+<span class="cmd">git push -u</span> origin main
+        </div>
+      </div>
+
+      <h2 class="section-title">Clone Repository</h2>
+      <div class="prose"><p>การ Clone คือการดาวน์โหลด repository จาก GitHub มาไว้ในเครื่องพร้อมประวัติ commit ทั้งหมด</p></div>
+      <div class="code-block">
+        <div class="code-header"><span>bash</span><button class="code-copy">Copy</button></div>
+        <div class="code-body">
+<span class="cmd">git clone</span> https://github.com/username/my-first-repo.git
+
+<span class="cmt"># clone แล้วตั้งชื่อโฟลเดอร์เอง</span>
+<span class="cmd">git clone</span> https://github.com/username/my-first-repo.git <span class="str">my-folder</span>
+        </div>
+      </div>
+
+      <h2 class="section-title">Fork &amp; Pull Request</h2>
+      <div class="prose">
+        <p><strong>Fork</strong> คือการ copy repository ของคนอื่นมาเป็นของตัวเอง เพื่อแก้ไขโดยไม่กระทบต้นฉบับ</p>
+        <p><strong>Pull Request (PR)</strong> คือการขอรวมโค้ดของเราเข้าไปใน repository ต้นทาง</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;">
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:1.5rem;">
+          <div style="font-weight:700;color:var(--accent-green);margin-bottom:1rem;font-size:0.9rem;">🍴 ขั้นตอน Fork</div>
+          <ol style="list-style:none;display:flex;flex-direction:column;gap:0.6rem;font-size:0.85rem;color:var(--text-secondary);">
+            <li>1. ไปที่ repo ที่ต้องการ</li>
+            <li>2. คลิกปุ่ม "Fork" มุมขวาบน</li>
+            <li>3. เลือก account ของคุณ</li>
+            <li>4. Clone fork มาทำงานในเครื่อง</li>
+          </ol>
+        </div>
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:1.5rem;">
+          <div style="font-weight:700;color:var(--accent-cyan);margin-bottom:1rem;font-size:0.9rem;">🔀 ขั้นตอน Pull Request</div>
+          <ol style="list-style:none;display:flex;flex-direction:column;gap:0.6rem;font-size:0.85rem;color:var(--text-secondary);">
+            <li>1. Push branch ขึ้น GitHub ของคุณ</li>
+            <li>2. ไปที่ repo ต้นทาง</li>
+            <li>3. คลิก "Compare &amp; pull request"</li>
+            <li>4. เขียนคำอธิบาย แล้วคลิก "Create PR"</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="info-box warn">
+        <div class="box-title">⚠️ ข้อควรระวัง</div>
+        อย่า push ตรงไปที่ main branch ในโปรเจกต์ทีม ควรสร้าง branch แยก แล้วทำ Pull Request เพื่อให้ทีมร่วม review โค้ดก่อนเสมอ
+      </div>
+
+      <div class="chapter-nav">
+        <a href="chapter3.html">← บทที่ 3</a>
+        <a href="chapter5.html">บทที่ 5 – Branch &amp; Merge →</a>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

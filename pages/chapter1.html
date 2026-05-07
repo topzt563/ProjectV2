@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="th">
+<!-- moved to: c:\Users\USER17\Downloads\gitlearn\projectV2\pages\chapter1.html -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>บทที่ 1 – ทำความรู้จัก Git | GitLearn</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="grid-bg">
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="../home.html" class="nav-logo"><span>~/</span>git<span>-</span>learn</a>
+    <div class="nav-links">
+      <a href="../home.html" class="nav-link">🏠 หน้าหลัก</a>
+      <a href="chapter1.html" class="nav-link active">บทที่ 1</a>
+      <a href="chapter2.html" class="nav-link">บทที่ 2</a>
+      <a href="chapter3.html" class="nav-link">บทที่ 3</a>
+      <a href="chapter4.html" class="nav-link">บทที่ 4</a>
+      <a href="chapter5.html" class="nav-link">บทที่ 5</a>
+    </div>
+    <button class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- SIDEBAR OVERLAY -->
+  <div id="sidebarOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:49;transition:opacity 0.3s;" onclick="document.getElementById('sidebar').classList.remove('open');this.style.display='none';"></div>
+
+  <div class="page-wrapper">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-title">บทเรียน</div>
+      <a href="chapter1.html" class="sidebar-link active"><span class="sidebar-num">01</span>ทำความรู้จัก Git</a>
+      <a href="chapter2.html" class="sidebar-link"><span class="sidebar-num">02</span>การติดตั้ง</a>
+      <a href="chapter3.html" class="sidebar-link"><span class="sidebar-num">03</span>คำสั่งพื้นฐาน</a>
+      <a href="chapter4.html" class="sidebar-link"><span class="sidebar-num">04</span>GitHub เบื้องต้น</a>
+      <a href="chapter5.html" class="sidebar-link"><span class="sidebar-num">05</span>Branch &amp; Merge</a>
+      <div class="sidebar-divider"></div>
+      <a href="../home.html" class="sidebar-link"><span class="sidebar-num">↩</span>กลับหน้าหลัก</a>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content-area">
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;">
+        <span class="tag tag-green">พื้นฐาน</span>
+        <span class="tag tag-cyan">Version Control</span>
+      </div>
+      <h1 class="page-title">บทที่ 1 – ทำความรู้จัก Git</h1>
+      <p class="page-subtitle">ทำความเข้าใจว่า Git คืออะไร ทำงานอย่างไร และทำไมจึงเป็นเครื่องมือจำเป็นสำหรับนักพัฒนาทุกคน</p>
+
+      <!-- VIDEO -->
+      <div class="video-container">
+        <div class="video-label"><span class="play-icon">▶</span> วิดีโอแนะนำ – Git คืออะไร? (Git in 100 Seconds)</div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/hwP7WQkmECE" title="Git in 100 Seconds" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <h2 class="section-title">Version Control System คืออะไร?</h2>
+      <div class="prose">
+        <p><strong>Version Control System (VCS)</strong> คือระบบที่ช่วยบันทึกการเปลี่ยนแปลงของไฟล์เมื่อเวลาผ่านไป ทำให้คุณสามารถย้อนกลับไปดูเวอร์ชันก่อนหน้าได้เสมอ</p>
+        <p>ลองนึกภาพว่าคุณกำลังเขียนโค้ดอยู่ แล้วเกิดความผิดพลาดขึ้น โดยไม่มี VCS คุณอาจต้องเขียนโค้ดใหม่ทั้งหมด แต่ถ้ามี Git คุณแค่พิมพ์คำสั่งเดียวเพื่อย้อนกลับ</p>
+      </div>
+
+      <h2 class="section-title">Git คืออะไร?</h2>
+      <div class="prose">
+        <p><strong>Git</strong> คือ Distributed Version Control System (DVCS) ที่พัฒนาโดย <strong>Linus Torvalds</strong> ผู้สร้าง Linux kernel ในปี 2005 ปัจจุบัน Git กลายเป็นมาตรฐานอุตสาหกรรมที่นักพัฒนาทั่วโลกใช้งาน</p>
+      </div>
+
+      <div class="info-box tip">
+        <div class="box-title">💡 ข้อดีของ Git</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+          <li>✅ ทำงานได้แบบ <strong>Offline</strong> – ไม่ต้องเชื่อมต่ออินเทอร์เน็ตตลอดเวลา</li>
+          <li>✅ <strong>เร็วมาก</strong> – ออกแบบมาให้ประมวลผลได้รวดเร็ว</li>
+          <li>✅ <strong>ฟรี &amp; Open Source</strong> – ใช้ได้ทุกแพลตฟอร์ม</li>
+          <li>✅ รองรับการ <strong>ทำงานเป็นทีม</strong> ได้ดีเยี่ยม</li>
+        </ul>
+      </div>
+
+      <h2 class="section-title">ความแตกต่าง Git vs GitHub</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;">
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:1.5rem;">
+          <div style="font-size:1.5rem;margin-bottom:0.75rem;">🔧</div>
+          <div style="font-weight:700;color:var(--accent-green);margin-bottom:0.5rem;font-size:1rem;">Git</div>
+          <div style="font-size:0.875rem;color:var(--text-secondary);line-height:1.7;">เครื่องมือ (Software) ที่ติดตั้งในเครื่องของคุณ ใช้ติดตามการเปลี่ยนแปลงของไฟล์บนเครื่อง</div>
+        </div>
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:1.5rem;">
+          <div style="font-size:1.5rem;margin-bottom:0.75rem;">🐙</div>
+          <div style="font-weight:700;color:var(--accent-cyan);margin-bottom:0.5rem;font-size:1rem;">GitHub</div>
+          <div style="font-size:0.875rem;color:var(--text-secondary);line-height:1.7;">เว็บไซต์ / Cloud Platform สำหรับเก็บโค้ดออนไลน์ ทำงานร่วมกับทีม และแชร์โปรเจกต์</div>
+        </div>
+      </div>
+
+      <h2 class="section-title">แนวคิดหลักของ Git</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin:1.5rem 0;">
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:10px;padding:1.25rem;">
+          <div style="font-family:'JetBrains Mono',monospace;color:var(--accent-green);font-size:0.8rem;margin-bottom:0.5rem;">Repository</div>
+          <div style="font-size:0.85rem;color:var(--text-secondary);">โฟลเดอร์โปรเจกต์ที่ Git ดูแลอยู่ มีโฟลเดอร์ .git ซ่อนอยู่ข้างใน</div>
+        </div>
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:10px;padding:1.25rem;">
+          <div style="font-family:'JetBrains Mono',monospace;color:var(--accent-cyan);font-size:0.8rem;margin-bottom:0.5rem;">Commit</div>
+          <div style="font-size:0.85rem;color:var(--text-secondary);">การบันทึก snapshot ของโค้ด ณ ขณะนั้น เหมือนการ save เกม</div>
+        </div>
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:10px;padding:1.25rem;">
+          <div style="font-family:'JetBrains Mono',monospace;color:#a78bfa;font-size:0.8rem;margin-bottom:0.5rem;">Branch</div>
+          <div style="font-size:0.85rem;color:var(--text-secondary);">สายการพัฒนาแยกออกมา ทำให้ทำงานหลายอย่างพร้อมกันได้</div>
+        </div>
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:10px;padding:1.25rem;">
+          <div style="font-family:'JetBrains Mono',monospace;color:#fb923c;font-size:0.8rem;margin-bottom:0.5rem;">Merge</div>
+          <div style="font-size:0.85rem;color:var(--text-secondary);">การรวม Branch ต่างๆ เข้าด้วยกัน</div>
+        </div>
+      </div>
+
+      <div class="info-box note">
+        <div class="box-title">📌 สรุปบทที่ 1</div>
+        Git คือระบบควบคุมเวอร์ชัน ช่วยติดตามการเปลี่ยนแปลง ย้อนกลับโค้ด และทำงานร่วมกับทีม GitHub คือแพลตฟอร์มออนไลน์ที่ใช้จัดเก็บ Git repository บนคลาวด์
+      </div>
+
+      <!-- CHAPTER NAV -->
+      <div class="chapter-nav">
+        <a href="../home.html">← หน้าหลัก</a>
+        <a href="chapter2.html">บทที่ 2 – การติดตั้ง →</a>
+      </div>
+    </main>
+  </div>
+
+  <!-- previous external script reference removed to avoid missing-file errors -->
+  <script>
+    // Inline fallback JS: toggles sidebar & overlay; safely no-ops if elements missing
+    (function () {
+      const hamburger = document.getElementById('hamburgerBtn');
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+
+      if (!hamburger || !sidebar || !overlay) return;
+
+      function openSidebar() {
+        sidebar.classList.add('open');
+        overlay.style.display = 'block';
+        requestAnimationFrame(() => overlay.style.opacity = '1');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove('open');
+        overlay.style.opacity = '0';
+        setTimeout(() => overlay.style.display = 'none', 300);
+        document.body.style.overflow = '';
+      }
+
+      hamburger.addEventListener('click', () => {
+        if (sidebar.classList.contains('open')) closeSidebar();
+        else openSidebar();
+      });
+
+      overlay.addEventListener('click', closeSidebar);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeSidebar();
+      });
+
+      overlay.style.opacity = overlay.style.opacity || '0';
+      overlay.style.display = overlay.style.display || 'none';
+    })();
+  </script>
+</body>
+</html>

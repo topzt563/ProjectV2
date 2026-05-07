@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>บทที่ 3 – คำสั่งพื้นฐาน Git | GitLearn</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="grid-bg">
+
+  <nav class="navbar">
+    <a href="../home.html" class="nav-logo"><span>~/</span>git<span>-</span>learn</a>
+    <div class="nav-links">
+      <a href="../home.html" class="nav-link">🏠 หน้าหลัก</a>
+      <a href="chapter1.html" class="nav-link">บทที่ 1</a>
+      <a href="chapter2.html" class="nav-link">บทที่ 2</a>
+      <a href="chapter3.html" class="nav-link active">บทที่ 3</a>
+      <a href="chapter4.html" class="nav-link">บทที่ 4</a>
+      <a href="chapter5.html" class="nav-link">บทที่ 5</a>
+    </div>
+    <button class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
+  </nav>
+
+  <div id="sidebarOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:49;" onclick="document.getElementById('sidebar').classList.remove('open');this.style.display='none';"></div>
+
+  <div class="page-wrapper">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-title">บทเรียน</div>
+      <a href="chapter1.html" class="sidebar-link"><span class="sidebar-num">01</span>ทำความรู้จัก Git</a>
+      <a href="chapter2.html" class="sidebar-link"><span class="sidebar-num">02</span>การติดตั้ง</a>
+      <a href="chapter3.html" class="sidebar-link active"><span class="sidebar-num">03</span>คำสั่งพื้นฐาน</a>
+      <a href="chapter4.html" class="sidebar-link"><span class="sidebar-num">04</span>GitHub เบื้องต้น</a>
+      <a href="chapter5.html" class="sidebar-link"><span class="sidebar-num">05</span>Branch &amp; Merge</a>
+      <div class="sidebar-divider"></div>
+      <a href="../home.html" class="sidebar-link"><span class="sidebar-num">↩</span>กลับหน้าหลัก</a>
+    </aside>
+
+    <main class="content-area">
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;">
+        <span class="tag tag-green">Commands</span>
+        <span class="tag tag-cyan">CLI</span>
+        <span class="tag tag-purple">Core</span>
+      </div>
+      <h1 class="page-title">บทที่ 3 – คำสั่งพื้นฐาน Git</h1>
+      <p class="page-subtitle">เรียนรู้คำสั่ง Git ที่ใช้บ่อยที่สุด ตั้งแต่สร้าง repo ไปจนถึง push โค้ดขึ้น GitHub</p>
+
+      <!-- VIDEO -->
+      <div class="video-container">
+        <div class="video-label"><span class="play-icon">▶</span> วิดีโอสาธิต – คำสั่ง Git พื้นฐานที่ต้องรู้</div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/USjZcfj8yxE" title="Git Commands" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <h2 class="section-title">ขั้นตอนการทำงานกับ Git (Workflow)</h2>
+      <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;margin:1.5rem 0;font-size:0.85rem;">
+        <div style="background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.3);color:var(--accent-green);padding:0.5rem 1rem;border-radius:8px;font-family:'JetBrains Mono',monospace;">Working Directory</div>
+        <div style="color:var(--text-secondary);font-size:1.2rem;">→</div>
+        <div style="background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);color:var(--accent-cyan);padding:0.5rem 1rem;border-radius:8px;font-family:'JetBrains Mono',monospace;">Staging Area</div>
+        <div style="color:var(--text-secondary);font-size:1.2rem;">→</div>
+        <div style="background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.3);color:#a78bfa;padding:0.5rem 1rem;border-radius:8px;font-family:'JetBrains Mono',monospace;">Local Repo</div>
+        <div style="color:var(--text-secondary);font-size:1.2rem;">→</div>
+        <div style="background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.3);color:#fbbf24;padding:0.5rem 1rem;border-radius:8px;font-family:'JetBrains Mono',monospace;">Remote (GitHub)</div>
+      </div>
+
+      <!-- git init -->
+      <h2 class="section-title">git init – เริ่มต้น Repository</h2>
+      <div class="prose"><p>ใช้คำสั่งนี้เพื่อเปลี่ยนโฟลเดอร์ปกติให้กลายเป็น Git repository</p></div>
+      <div class="code-block">
+        <div class="code-header"><span>bash</span><button class="code-copy">Copy</button></div>
+        <div class="code-body">
+<span class="cmt"># สร้างโฟลเดอร์ใหม่แล้ว init</span>
+mkdir my-project
+cd my-project
+<span class="cmd">git init</span>
+
+<span class="out">Initialized empty Git repository in /my-project/.git/</span>
+        </div>
+      </div>
+
+      <!-- git status -->
+      <h2 class="section-title">git status – ดูสถานะไฟล์</h2>
+      <div class="prose"><p>คำสั่งที่ใช้บ่อยที่สุด ตรวจสอบว่าไฟล์ไหนถูกแก้ไข ไฟล์ไหนพร้อม commit</p></div>
+      <div class="code-block">
+        <div class="code-header"><span>bash</span><button class="code-copy">Copy</button></div>
+        <div class="code-body">
+<span class="cmd">git status</span>
+
+<span class="out">On branch main</span>
+<span class="err">Untracked files:</span>
+<span class="err">  index.html</span>
+<span class="cmt">(use "git add" to track)</span>
+        </div>
+      </div>
+
+      <!-- git add -->
+      <h2 class="section-title">git add – เพิ่มไฟล์ไปยัง Staging Area</h2>
+      <div class="code-block">
+        <div class="code-header"><span>bash</span><button class="code-copy">Copy</button></div>
+        <div class="code-body">
+<span class="cmt"># เพิ่มไฟล์เดียว</span>
+<span class="cmd">git add</span> index.html
+
+<span class="cmt"># เพิ่มทุกไฟล์ที่เปลี่ยนแปลง</span>
+<span class="cmd">git add .</span>
+
+<span class="cmt"># เพิ่มเฉพาะไฟล์ .html ทั้งหมด</span>
+<span class="cmd">git add</span> <span class="flag">*.html</span>
+        </div>
+      </div>
+
+      <!-- git commit -->
+      <h2 class="section-title">git commit – บันทึกการเปลี่ยนแปลง</h2>
+      <div class="info-box note">
+        <div class="box-title">📝 แนวทางการเขียน Commit Message ที่ดี</div>
+        ใช้ภาษาที่ชัดเจน เช่น "Add login form", "Fix navigation bug", "Update README" ไม่ควรเขียนแบบคลุมเครือ เช่น "fix" หรือ "update"
+      </div>
+      <div class="code-block">
+        <div class="code-header"><span>bash</span><button class="code-copy">Copy</button></div>
+        <div class="code-body">
+<span class="cmt"># commit พร้อมข้อความ</span>
+<span class="cmd">git commit</span> <span class="flag">-m</span> <span class="str">"Add homepage HTML structure"</span>
+
+<span class="cmt"># commit และ add ไฟล์ที่ติดตามอยู่แล้วพร้อมกัน</span>
+<span class="cmd">git commit</span> <span class="flag">-am</span> <span class="str">"Update styles and fix layout"</span>
+
+<span class="out">[main 3a8f9c1] Add homepage HTML structure</span>
+<span class="out"> 1 file changed, 42 insertions(+)</span>
+        </div>
+      </div>
+
+      <!-- git log -->
+      <h2 class="section-title">git log – ดูประวัติ Commit</h2>
+      <div class="code-block">
+        <div class="code-header"><span>bash</span><button class="code-copy">Copy</button></div>
+        <div class="code-body">
+<span class="cmt"># ดู log แบบละเอียด</span>
+<span class="cmd">git log</span>
+
+<span class="cmt"># ดู log แบบสั้น (แนะนำ)</span>
+<span class="cmd">git log</span> <span class="flag">--oneline</span>
+
+<span class="out">3a8f9c1 Add homepage HTML structure</span>
+<span class="out">b7d2e4f Initial commit</span>
+        </div>
+      </div>
+
+      <!-- git push / pull -->
+      <h2 class="section-title">git push &amp; git pull – ส่ง/รับโค้ดกับ Remote</h2>
+      <div class="code-block">
+        <div class="code-header"><span>bash</span><button class="code-copy">Copy</button></div>
+        <div class="code-body">
+<span class="cmt"># push โค้ดขึ้น GitHub (ครั้งแรก)</span>
+<span class="cmd">git push</span> <span class="flag">-u</span> origin main
+
+<span class="cmt"># push ครั้งถัดไป</span>
+<span class="cmd">git push</span>
+
+<span class="cmt"># pull โค้ดล่าสุดจาก GitHub</span>
+<span class="cmd">git pull</span>
+
+<span class="out">Already up to date.</span>
+        </div>
+      </div>
+
+      <!-- QUICK REF TABLE -->
+      <h2 class="section-title">ตารางคำสั่งอ้างอิงด่วน</h2>
+      <div style="overflow-x:auto;border-radius:12px;border:1px solid var(--border-color);">
+        <table class="cmd-table">
+          <thead>
+            <tr>
+              <th>คำสั่ง</th>
+              <th>ความหมาย</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="mono">git init</td><td>สร้าง Git repository ใหม่</td></tr>
+            <tr><td class="mono">git status</td><td>ดูสถานะไฟล์ใน working directory</td></tr>
+            <tr><td class="mono">git add &lt;file&gt;</td><td>เพิ่มไฟล์ไปยัง Staging Area</td></tr>
+            <tr><td class="mono">git add .</td><td>เพิ่มทุกไฟล์ที่เปลี่ยนแปลงไปยัง Staging</td></tr>
+            <tr><td class="mono">git commit -m "msg"</td><td>บันทึกการเปลี่ยนแปลงพร้อมข้อความ</td></tr>
+            <tr><td class="mono">git log --oneline</td><td>ดูประวัติ commit แบบย่อ</td></tr>
+            <tr><td class="mono">git push</td><td>ส่งโค้ดขึ้น Remote repository</td></tr>
+            <tr><td class="mono">git pull</td><td>ดึงโค้ดล่าสุดจาก Remote</td></tr>
+            <tr><td class="mono">git clone &lt;url&gt;</td><td>คัดลอก repository จาก Remote มาไว้ในเครื่อง</td></tr>
+            <tr><td class="mono">git diff</td><td>ดูความแตกต่างของไฟล์ที่ยังไม่ได้ stage</td></tr>
+            <tr><td class="mono">git restore &lt;file&gt;</td><td>ยกเลิกการแก้ไขไฟล์ใน working directory</td></tr>
+            <tr><td class="mono">git reset HEAD &lt;file&gt;</td><td>นำไฟล์ออกจาก Staging Area</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="chapter-nav">
+        <a href="chapter2.html">← บทที่ 2</a>
+        <a href="chapter4.html">บทที่ 4 – GitHub เบื้องต้น →</a>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
